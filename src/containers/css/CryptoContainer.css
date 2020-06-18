@@ -7,3 +7,21 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
+
+.header {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.header button {
+    width: 200px;
+    padding: 4px;
+    font-weight: bold;
+    background-color: transparent;
+    border-radius: 7px;
+}
+
+.header button:hover {
+    background-color: turquoise;
+    color: white;
+}

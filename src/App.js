@@ -16,12 +16,11 @@ class App extends React.Component{
   .then(data => this.setState({assets: data.data}));
   }
 
-  bitcoinDetail = () => {
-    this.setState({bitcoinPage: true})
-  }
+  handleBack = () => this.setState({bitcoinPage: false})
+
+  bitcoinDetail = () => this.setState({bitcoinPage: true})
 
   renderAssets = () => {
-    
     if(this.state.assets.length > 0){
       return this.state.assets.map(asset => <img key={asset.id} src={`https://static.coincap.io/assets/icons/${asset.symbol.toLowerCase()}@2x.png`}/>)
     }
@@ -37,7 +36,7 @@ class App extends React.Component{
       <div className="App">
         {
         this.state.bitcoinPage? 
-        <BitcoinDetail details = {this.findBitcoinDetail()}/> :
+        <BitcoinDetail details = {this.findBitcoinDetail()} back={this.handleBack}/> :
        <CryptoContainer assets={this.state.assets} bitcoinDetail={this.bitcoinDetail}/>
         }
       </div>
