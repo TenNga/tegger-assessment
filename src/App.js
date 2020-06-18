@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import CryptoContainer from './containers/CryptoContainer';
 
 class App extends React.Component{
 
@@ -15,16 +16,16 @@ class App extends React.Component{
   }
 
   renderAssets = () => {
-    console.log("state: ", this.state.assets[1])
+    
     if(this.state.assets.length > 0){
-      return this.state.assets.map(asset => <h4>{asset.synbol}</h4>)
+      return this.state.assets.map(asset => <img key={asset.id} src={`https://static.coincap.io/assets/icons/${asset.symbol.toLowerCase()}@2x.png`}/>)
     }
   }
 
   render(){
     return (
       <div className="App">
-       {this.renderAssets()}
+       <CryptoContainer assets={this.state.assets} />
       </div>
     );
   }
