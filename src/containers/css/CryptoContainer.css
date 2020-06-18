@@ -1,11 +1,22 @@
 #card-container-three{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    margin: 0px 10vw;
 }
 
 #card-container-four{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    margin: 0px 10vw;
+}
+
+.top-header {
+    width: 100vw;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: white;
+    padding: 10px;
 }
 
 .header {

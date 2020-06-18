@@ -10,22 +10,17 @@ class App extends React.Component{
     bitcoinPage: false
   }
 
+  //fetch onces in async 
   componentDidMount = () => {
     fetch('https://api.coincap.io/v2/assets')
   .then(response => response.json())
   .then(data => this.setState({assets: data.data}));
   }
 
-  handleBack = () => this.setState({bitcoinPage: false})
+  //Toggle bitcoinPage value on calling this function
+  toggleBitcoinPage = () => this.setState({bitcoinPage: !this.state.bitcoinPage})
 
-  bitcoinDetail = () => this.setState({bitcoinPage: true})
-
-  renderAssets = () => {
-    if(this.state.assets.length > 0){
-      return this.state.assets.map(asset => <img key={asset.id} src={`https://static.coincap.io/assets/icons/${asset.symbol.toLowerCase()}@2x.png`}/>)
-    }
-  }
-
+  //find details of bitcoin and pass it to BitcoinDetail component
   findBitcoinDetail = () => {
     if(this.state.assets.length > 0)
       return this.state.assets.find(asset => asset.id === "bitcoin")
@@ -36,8 +31,8 @@ class App extends React.Component{
       <div className="App">
         {
         this.state.bitcoinPage? 
-        <BitcoinDetail details = {this.findBitcoinDetail()} back={this.handleBack}/> :
-       <CryptoContainer assets={this.state.assets} bitcoinDetail={this.bitcoinDetail}/>
+        <BitcoinDetail details = {this.findBitcoinDetail()} toggleBitcoinPage={this.toggleBitcoinPage}/> :
+       <CryptoContainer assets={this.state.assets} toggleBitcoinPage={this.toggleBitcoinPage}/>
         }
       </div>
     );

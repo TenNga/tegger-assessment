@@ -3,6 +3,8 @@ import './css/CryptoCard.css';
 import { AiFillCaretDown,AiFillCaretUp } from "react-icons/ai";
 
 const CryptoCard = ({data}) => {
+
+    //filter percentage to up or down
     const renderPercent = () => {
         if(data.changePercent24Hr > 0)
             return <h4 id="green"><AiFillCaretUp />{data.changePercent24Hr}</h4>

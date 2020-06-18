@@ -1,11 +1,35 @@
 .detail-container {
     display: flex;
     justify-content: space-evenly;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 20px;
+}
+
+#home-btn {
+    width: 200px;
+    padding: 4px;
+    font-weight: bold;
+    background-color: transparent;
+    border-radius: 7px;
+}
+
+#home-btn:hover {
+    background-color: rgb(66, 169, 135);
+    color: white;
+}
+
+#rank{
+    color: red;
+}
+
+.text-value{
+    color: gray;
 }
 
 #chart-header {
     color: white;
     padding: 10px;
     margin: 5px 0px 15px 0px;
-    background-color: gray;
+    background-color: rgb(66, 169, 135);
 }
