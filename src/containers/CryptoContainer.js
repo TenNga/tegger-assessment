@@ -18,6 +18,7 @@ class CryptoContainer extends React.Component {
     handleThreeColumn = () => this.setState({column: 3})
 
 
+
     handleColumn = () => {
         if(this.state.column == 3){
             return (
@@ -43,6 +44,8 @@ class CryptoContainer extends React.Component {
                     <button onClick={this.handleFourColumn}>Four Column</button>
 
                     <button onClick={this.handleThreeColumn}>Three Column</button>
+
+                    <button onClick={this.props.bitcoinDetail}>BitCoin Detail</button>
                 </div>
                 {this.handleColumn()}
             </>

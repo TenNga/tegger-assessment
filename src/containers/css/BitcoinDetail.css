@@ -1,0 +1,11 @@
+.detail-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#chart-header {
+    color: white;
+    padding: 10px;
+    margin: 5px 0px 15px 0px;
+    background-color: gray;
+}

@@ -1,18 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import CryptoContainer from './containers/CryptoContainer';
+import BitcoinDetail from './containers/BitcoinDetail';
 
 class App extends React.Component{
 
   state = {
-    assets: []
+    assets: [],
+    bitcoinPage: false
   }
 
   componentDidMount = () => {
     fetch('https://api.coincap.io/v2/assets')
   .then(response => response.json())
   .then(data => this.setState({assets: data.data}));
+  }
+
+  bitcoinDetail = () => {
+    this.setState({bitcoinPage: true})
   }
 
   renderAssets = () => {
@@ -22,10 +27,19 @@ class App extends React.Component{
     }
   }
 
+  findBitcoinDetail = () => {
+    if(this.state.assets.length > 0)
+      return this.state.assets.find(asset => asset.id === "bitcoin")
+  }
+
   render(){
     return (
       <div className="App">
-       <CryptoContainer assets={this.state.assets} />
+        {
+        this.state.bitcoinPage? 
+        <BitcoinDetail details = {this.findBitcoinDetail()}/> :
+       <CryptoContainer assets={this.state.assets} bitcoinDetail={this.bitcoinDetail}/>
+        }
       </div>
     );
   }
